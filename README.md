@@ -18,8 +18,21 @@ We use three datasets to evaluate our method:
 - **Harvard-FairVLMed:** The dataset can be accessed via this [link](https://github.com/Harvard-Ophthalmology-AI-Lab/FairCLIP?tab=readme-ov-file).
 - **MIMIC-CXR:** The dataset can be accessed via this [link](https://github.com/MIT-LCP/mimic-cxr). The original dataset is of extremely large size. Therefore, we utilized a cleaned version provided in this [link](https://github.com/cuhksz-nlp/R2Gen).
 
+The train/val/test split can be found in the folder `/split`. To use the file, put the split file under the data directory.
 
 ## Training opaque models
+
+To pre-train the opaque models with the corresponding dataset, using the following command
+
+```commandline
+python train_opaque.py --data ham --epoch 200 --backbone densenet --trial 1 --root address/to/data/folder 
+--ckpt_dir address/to/ckpt/folder
+```
+
+`--data` specifies the dataset used for training, can be one of  `ham`, `mimic`, and `fundus`. `--backbone` specifies 
+the backbone of the network, can be one of `densenet`, `resnet`,  `convnext`, and `vit`. `--epoch` denotes the number 
+of epochs for training. `--trial` is the index of the experimental trail. `--root` specifies the data directory. 
+`--ckpt_dir` specifies the directory to save the trained checkpoints. 
 
 ## Training SAE
 
@@ -28,8 +41,6 @@ We use three datasets to evaluate our method:
 ## Training CAV
 
 ## Constructing CBMs
-
-## Evaluation
 
 
 ## Bibtex
